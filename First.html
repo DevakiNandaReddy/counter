@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .counter button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .counter h1 {
+            margin: 0 20px;
+            font-size: 48px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Counter</h2>
+    <div class="counter">
+        <button id="decrease">Decrease</button>
+        <h1 id="counter">0</h1>
+        <button id="increase">Increase</button>
+    </div>
+    <button id="reset">Reset</button>
+
+    <script>
+        let count = 0;
+
+        document.getElementById('decrease').addEventListener('click', () => {
+            count--;
+            updateCounter();
+        });
+
+        document.getElementById('reset').addEventListener('click', () => {
+            count = 0;
+            updateCounter();
+        });
+
+        document.getElementById('increase').addEventListener('click', () => {
+            count++;
+            updateCounter();
+        });
+
+        function updateCounter() {
+            const counterElement = document.getElementById('counter');
+            counterElement.textContent = count;
+
+            if (count < 0) {
+                counterElement.style.color = 'red';
+            } else if (count > 0) {
+                counterElement.style.color = 'yellow';
+            } else {
+                counterElement.style.color = 'black';
+            }
+        }
+    </script>
+</body>
+</html>
